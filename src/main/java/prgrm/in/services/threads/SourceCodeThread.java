@@ -20,6 +20,8 @@ public class SourceCodeThread implements Runnable {
         while (true){
             try {
                 String url=this.memoryQueue.toDownloadUrlQueue.take();
+
+                System.out.println("Fetching "+url);
                 String id=this.crawlServices.projectModel.id;
                 int total=this.memoryQueue.data.size();
 

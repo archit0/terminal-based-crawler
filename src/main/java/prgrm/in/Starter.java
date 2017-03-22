@@ -6,12 +6,14 @@ import prgrm.in.services.CrawlServices;
 import prgrm.in.services.ExctractServices;
 import prgrm.in.services.FormatServices;
 
+import java.util.Scanner;
+
 /**
  * Created by archit on 22/3/17.
  */
 public class Starter {
     public static void a1(){
-        String url= "www.tutorialspoint.com";
+        String url= "http://www.cricbuzz.com/";
 
         ExctractServices exctractServices=new ExctractServices();
         FormatServices formatServices=new FormatServices();
@@ -22,8 +24,7 @@ public class Starter {
 
         crawlServices.start();
     }
-    public static void a2(){
-        String url= "www.w3schools.com";
+    public static void a2(String url){
 
         ExctractServices exctractServices=new ExctractServices();
         FormatServices formatServices=new FormatServices();
@@ -36,10 +37,12 @@ public class Starter {
     }
     public static void main(String[] args){
 
-        a1();
 
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter domain: ");
+        String t=sc.nextLine();
 
-
+        a2(t);
 
 
 
