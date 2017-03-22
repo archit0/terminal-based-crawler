@@ -28,7 +28,7 @@ public class ProcessingThread implements Runnable {
             try {
                 String url=this.memoryQueue.toProcessUrlQueue.take();
                 String source=this.memoryQueue.data.get(url);
-
+		this.memoryQueue.data.put(url,"");
 
                 ExtractLinkModel extractLinkModel=this.crawlServices.extractServices.extractLinks(source);
                 Gson gson=new Gson();
