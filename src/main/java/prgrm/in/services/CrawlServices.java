@@ -3,6 +3,11 @@ package prgrm.in.services;
 import prgrm.in.models.ProjectModel;
 import prgrm.in.services.threads.ProcessingThread;
 import prgrm.in.services.threads.SourceCodeThread;
+import prgrm.in.services.threads.TerminationThread;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by archit on 21/3/17.
@@ -26,8 +31,21 @@ public class CrawlServices {
 
         Runnable sourceCodeThread=new SourceCodeThread(this,memoryQueue);
         Runnable processingThread=new ProcessingThread(this,memoryQueue);
-        new Thread(sourceCodeThread).start();
-        new Thread(processingThread).start();
+
+
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(sourceCodeThread, 0,10, TimeUnit.MILLISECONDS);
+
+
+        ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(1);
+        executor2.scheduleAtFixedRate(processingThread, 0,10, TimeUnit.MILLISECONDS);
+
+
+        ScheduledExecutorService executor3 = Executors.newScheduledThreadPool(1);
+        Runnable terminatingThread=new TerminationThread(memoryQueue,executor,executor2,executor3);
+
+        executor3.scheduleAtFixedRate(terminatingThread, 0,100, TimeUnit.MILLISECONDS);
     }
 
 

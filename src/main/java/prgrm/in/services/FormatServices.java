@@ -13,7 +13,7 @@ public class FormatServices {
             return !main.equalsIgnoreCase(toCheck);
     }
     public  String formatUrl(String url){
-
+        url=url.trim();
         String newFormattedUrl="";
         boolean httpExists=url.toLowerCase().indexOf("http://")==0 || url.toLowerCase().indexOf("https://")==0;
 

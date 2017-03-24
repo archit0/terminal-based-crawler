@@ -1,3 +1,9 @@
 .idea/
 .idea
 .idea/*
+target/
+target
+target/*
+src/main/resources/
+src/test/
+target/archive-tmp/
