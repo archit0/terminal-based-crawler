@@ -9,7 +9,6 @@ public class ProjectModel {
     public String baseUrl;
     public boolean otherDomains;
     public int crawlLimit;
-
     public ProjectModel(){
         String uuid = UUID.randomUUID().toString();
         this.id=uuid;

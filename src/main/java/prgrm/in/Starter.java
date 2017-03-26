@@ -29,7 +29,7 @@ public class Starter {
         ExctractServices exctractServices=new ExctractServices();
         FormatServices formatServices=new FormatServices();
         ProjectModel projectModel=new ProjectModel();
-        projectModel.crawlLimit=15;
+        projectModel.crawlLimit=-1;
         projectModel.baseUrl=formatServices.formatUrl(url);
         CrawlServices crawlServices=new CrawlServices(projectModel,exctractServices,formatServices);
         crawlServices.start();

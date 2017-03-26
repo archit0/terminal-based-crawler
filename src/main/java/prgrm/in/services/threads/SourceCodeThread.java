@@ -20,11 +20,7 @@ public class SourceCodeThread implements Runnable {
         try {
             if(this.memoryQueue.toDownloadUrlQueue.size()!=0) {
                 String url = this.memoryQueue.toDownloadUrlQueue.take();
-
-
-                String id = this.crawlServices.projectModel.id;
                 int total = this.memoryQueue.data.size();
-
                 if (total >= this.crawlServices.projectModel.crawlLimit && this.crawlServices.projectModel.crawlLimit != -1) {
                     System.out.println("Crawl Limit Reached Can't Crawl "+url);
                 } else {
